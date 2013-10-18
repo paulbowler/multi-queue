@@ -1,6 +1,11 @@
 (ns multi-queue.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def waiting-list [
+              {:name "Fred" :special 1, :miles 10, :catchment 0}
+              {:name "Bob" :special 1, :miles 50, :catchment 1}
+              {:name "Jim" :special 0, :miles 20, :catchment 1}
+              {:name "Paul" :special 0, :miles 1, :catchment 1}
+              {:name "Bert" :special 1, :miles 5, :catchment 0}
+              ])
+
+(sort-by (apply juxt [:special :catchment :miles]) waiting-list)
